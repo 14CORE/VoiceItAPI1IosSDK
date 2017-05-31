@@ -6,7 +6,7 @@
 #
 
 Pod::Spec.new do |s|
-s.name             = 'VoiceItApi1IosSDK'
+s.name             = 'VoiceItAPI1IosSDK'
 s.version          = '0.1'
 s.summary          = 'A pod that lets you add authentication to your iOS apps, brought to you by VoiceIt'
 
