@@ -202,7 +202,7 @@ Authenticate user with the given userId and contentLanguage('en-US','es-ES' etc.
 ##### *Swift*
 ```swift
 myVoiceIt?.authentication("USER_ID_HERE", password:"PASSWORD_HERE", contentLanguage: "CONTENT_LANGUAGE_HERE", recordingFinished: {
-    print("Audio Verification Recording Finished, now waiting for API Call to respond")
+    print("Authentication Recording Finished, now waiting for API Call to respond")
 }, callback: {
     jsonResponse in
     print("JSON RESPONSE: \(jsonResponse!)")
@@ -212,7 +212,7 @@ myVoiceIt?.authentication("USER_ID_HERE", password:"PASSWORD_HERE", contentLangu
 ##### *Objective-C*
 ```objc
 [_myVoiceIt authentication:@"USER_ID_HERE" password:@"PASSWORD_HERE" contentLanguage:@"CONTENT_LANGUAGE_HERE" recordingFinished:^(void){
-    NSLog(@"Audio Verification Recording Finished, now waiting for API Call to respond");
+    NSLog(@"Authentication Recording Finished, now waiting for API Call to respond");
 } callback:^(NSString * jsonResponse){
     NSLog(@"JSONResponse: %@", jsonResponse);
 } ];
