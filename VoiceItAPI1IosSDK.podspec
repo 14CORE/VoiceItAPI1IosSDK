@@ -17,17 +17,17 @@ s.summary          = 'A pod that lets you add authentication to your iOS apps, b
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
 s.description      = 'A pod that lets you add authentication to your iOS apps, brought to you by VoiceIt. Please visit https://voiceit.tech to learn more and sign up for an account.'
-s.homepage         = 'https://github.com/voiceittech/VoiceItApi1IosSDK'
+s.homepage         = 'https://github.com/voiceittech/VoiceItAPI1IosSDK'
 s.license          = { :type => 'MIT', :file => 'LICENSE' }
 s.author           = { 'armaanbindra' => 'armaan.bindra@voiceit-tech.com' }
-s.source           = { :git => 'https://github.com/voiceittech/VoiceItApi1IosSDK.git', :tag => s.version.to_s }
+s.source           = { :git => 'https://github.com/voiceittech/VoiceItAPI1IosSDK.git', :tag => s.version.to_s }
 
 s.ios.deployment_target = '8.0'
 
-s.source_files = 'VoiceItApi1IosSDK/Classes/**/*'
+s.source_files = 'VoiceItAPI1IosSDK/Classes/**/*'
 
 # s.resource_bundles = {
-#   'VoiceItApi2IosSDK' => ['VoiceItApi2IosSDK/Assets/*.png']
+#   'VoiceItApi2IosSDK' => ['VoiceItAPI1IosSDK/Assets/*.png']
 # }
 
 #s.public_header_files = 'Pod/Classes/**/*.h'
