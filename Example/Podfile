@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'VoiceItAPI1IosSDK_Example' do
+  pod 'VoiceItAPI1IosSDK', :path => '../'
+
+  target 'VoiceItAPI1IosSDK_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
