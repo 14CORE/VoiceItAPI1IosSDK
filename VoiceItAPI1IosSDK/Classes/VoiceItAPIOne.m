@@ -28,17 +28,13 @@ NSString * const host = @"https://siv.voiceprintportal.com/sivservice/api/";
 {
     const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
     NSData *data = [NSData dataWithBytes:cstr length:input.length];
-    
     uint8_t digest[CC_SHA256_DIGEST_LENGTH];
-    
-    CC_SHA256(data.bytes, data.length, digest);
-    
+    CC_SHA256(data.bytes, (CC_LONG) data.length, digest);
     NSMutableString *output =
     [NSMutableString stringWithCapacity:CC_SHA256_DIGEST_LENGTH * 2];
     
     for (int i = 0; i < CC_SHA256_DIGEST_LENGTH; i++)
         [output appendFormat:@"%02x", digest[i]];
-    
     return output;
 }
 
@@ -134,8 +130,12 @@ NSString * const host = @"https://siv.voiceprintportal.com/sivservice/api/";
         _enrollmentCompleted = callback;
         [self createEnrollment:audioPath];
     }
-    
+
 - (void)createEnrollmentByURL:(NSString *)userId password:(NSString *)password audioURL:(NSString *)audioURL callback:(void (^)(NSString *))callback{
+    [self createEnrollmentByURL:userId password:password contentLanguage:@"" audioURL:audioURL callback:callback];
+}
+
+- (void)createEnrollmentByURL:(NSString *)userId password:(NSString *)password contentLanguage:(NSString*)contentLanguage audioURL:(NSString *)audioURL callback:(void (^)(NSString *))callback{
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
                                     initWithURL:[[NSURL alloc] initWithString:[self buildURL:@"enrollments/bywavurl"]]];
     NSURLSession *session = [NSURLSession sharedSession];
@@ -144,6 +144,7 @@ NSString * const host = @"https://siv.voiceprintportal.com/sivservice/api/";
     [request addValue:[self sha256:password] forHTTPHeaderField:@"VsitPassword"];
     [request addValue:self.developerId forHTTPHeaderField:@"VsitDeveloperId"];
     [request addValue:audioURL forHTTPHeaderField:@"VsitwavURL"];
+    [request addValue:contentLanguage forHTTPHeaderField:@"ContentLanguage"];
     
     NSURLSessionDataTask *task =
     [session dataTaskWithRequest:request
@@ -263,8 +264,12 @@ NSString * const host = @"https://siv.voiceprintportal.com/sivservice/api/";
     }
     
 # pragma mark Authentication API Calls
-    
+
 - (void)authenticationByURL:(NSString *)userId password:(NSString *)password audioURL:(NSString *)audioURL callback:(void (^)(NSString *))callback{
+    [self authenticationByURL:userId password:password contentLanguage:@"" audioURL:audioURL callback:callback];
+}
+
+- (void)authenticationByURL:(NSString *)userId password:(NSString *)password contentLanguage:(NSString*)contentLanguage audioURL:(NSString *)audioURL callback:(void (^)(NSString *))callback{
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
                                     initWithURL:[[NSURL alloc] initWithString:[self buildURL:@"authentications/bywavurl"]]];
     NSURLSession *session = [NSURLSession sharedSession];
@@ -273,6 +278,7 @@ NSString * const host = @"https://siv.voiceprintportal.com/sivservice/api/";
     [request addValue:[self sha256:password] forHTTPHeaderField:@"VsitPassword"];
     [request addValue:self.developerId forHTTPHeaderField:@"VsitDeveloperId"];
     [request addValue:audioURL forHTTPHeaderField:@"VsitwavURL"];
+    [request addValue:contentLanguage forHTTPHeaderField:@"ContentLanguage"];
     
     NSURLSessionDataTask *task =
     [session dataTaskWithRequest:request

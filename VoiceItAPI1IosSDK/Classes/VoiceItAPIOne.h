@@ -42,6 +42,8 @@ typedef enum { enrollment, authentication } RecordingType;
     
 - (void)createEnrollmentByURL:(NSString *)userId password:(NSString *)password audioURL:(NSString *)audioURL callback:(void (^)(NSString *))callback;
 
+- (void)createEnrollmentByURL:(NSString *)userId password:(NSString *)password contentLanguage:(NSString*)contentLanguage  audioURL:(NSString *)audioURL callback:(void (^)(NSString *))callback;
+
 - (void)createEnrollment:(NSString *)userId password:(NSString *)password contentLanguage:(NSString*)contentLanguage recordingFinished:(void (^)(void))recordingFinished callback:(void (^)(NSString *))callback;
     
 - (void)createEnrollment:(NSString *)userId
@@ -58,6 +60,7 @@ typedef enum { enrollment, authentication } RecordingType;
                audioPath:(NSString *)audioPath
                 callback:(void (^)(NSString *))callback;
 - (void)authenticationByURL:(NSString *)userId password:(NSString *)password audioURL:(NSString *)audioURL callback:(void (^)(NSString *))callback;
+- (void)authenticationByURL:(NSString *)userId password:(NSString *)password contentLanguage:(NSString*)contentLanguage audioURL:(NSString *)audioURL callback:(void (^)(NSString *))callback;
 - (void)authentication:(NSString *)userId
                 password:(NSString *)password
          contentLanguage:(NSString*)contentLanguage
