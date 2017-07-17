@@ -3,7 +3,6 @@
 [![Version](https://img.shields.io/cocoapods/v/VoiceItAPI1IosSDK.svg?style=flat)](http://cocoapods.org/pods/VoiceItAPI1IosSDK)
 [![License](https://img.shields.io/cocoapods/l/VoiceItAPI1IosSDK.svg?style=flat)](http://cocoapods.org/pods/VoiceItAPI1IosSDK)
 [![Platform](https://img.shields.io/cocoapods/p/VoiceItAPI1IosSDK.svg?style=flat)](http://cocoapods.org/pods/VoiceItAPI1IosSDK)
-<!-- [![Build Status](https://travis-ci.org/voiceittech/VoiceItApi2IosSDK.svg?branch=master)](https://travis-ci.org/voiceittech/VoiceItApi2IosSDK) -->
 
 ## VoiceIt API 1.0 iOS SDK
 
