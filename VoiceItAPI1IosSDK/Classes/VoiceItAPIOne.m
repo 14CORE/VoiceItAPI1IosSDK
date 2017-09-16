@@ -311,8 +311,8 @@ NSString * const host = @"https://siv.voiceprintportal.com/sivservice/api/";
         _userId = userId;
         _password = password;
         _contentLanguage = contentLanguage;
-        _enrollmentCompleted = callback;
-        [self createEnrollment:audioPath];
+        _authenticationCompleted = callback;
+        [self authentication:audioPath];
     }
 
 - (void)authentication:(NSString *)userId
@@ -320,7 +320,7 @@ NSString * const host = @"https://siv.voiceprintportal.com/sivservice/api/";
                audioPath:(NSString *)audioPath
                 callback:(void (^)(NSString *))callback
     {
-        [self createEnrollment:userId password:password contentLanguage:@"" audioPath:audioPath callback:callback];
+        [self authentication:userId password:password contentLanguage:@"" audioPath:audioPath callback:callback];
     }
 
 - (void)authentication:(NSString *)userId
@@ -333,12 +333,11 @@ NSString * const host = @"https://siv.voiceprintportal.com/sivservice/api/";
         _password = password;
         _contentLanguage = contentLanguage;
         _recType = authentication;
-        _enrollmentCompleted = callback;
+        _authenticationCompleted = callback;
         _recordingCompleted = recordingFinished;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self recordAudio];
         });
-
     }
 
     - (void)authentication:(NSString *)userId
